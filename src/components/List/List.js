@@ -1,9 +1,10 @@
 import React from 'react';
 import { useReducer, useState, useEffect } from 'react';
 
+let timeoutId;
 function fakeAPI () {
   return new Promise((resolve, reject) => {
-    setTimeout(() => resolve(['joe', 'bob']), 1000);
+    timeoutId = setTimeout(() => resolve(['joe', 'bob']), 1000);
   });
 }
 
@@ -36,7 +37,7 @@ export default function List() {
   useEffect(() => {
       fakeAPI()
       .then(json => updateList(json));
-      return;
+      return () => clearTimeout(timeoutId);
   })
   return(
     <div>
