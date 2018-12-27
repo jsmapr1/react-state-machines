@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useReducer, useState, useEffect } from 'react';
 
 function fakeAPI () {
   return new Promise((resolve, reject) => {
@@ -7,13 +7,43 @@ function fakeAPI () {
   });
 }
 
+const basicMachine = {
+  initial: 'closed',
+  states: {
+    open: {
+      on: {
+        TOGGLE: 'closed'
+      }
+    },
+    closed: {
+      on: {
+        TOGGLE: 'open'
+      }
+    }
+  }
+};
+
+const transition = (state, event) => {
+  return basicMachine.states[state].on[event] || state;
+}
+
 export default function List() {
   const [list, updateList] = useState([]);
-  fakeAPI()
-    .then(data => updateList(data));
+  const [display, action] = useReducer(
+    transition,
+    basicMachine.initial
+  );
+  useEffect(() => {
+      fakeAPI()
+      .then(json => updateList(json));
+      return;
+  })
   return(
     <div>
-      {list.map(item => <h2>{item}</h2>)}
+      <button onClick={() => action('TOGGLE')}>Display</button>
+      {display === 'open' &&
+        list.map(item => <h2 key={item}>{item}</h2>)
+      }
     </div>
   )
 }
