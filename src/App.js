@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import './App.css';
 import List from './components/List/List';
+import XstateList from './components/XstateList/XstateList';
 
 class App extends Component {
   render() {
@@ -16,10 +17,14 @@ class App extends Component {
             <li>
               <Link to="/basic">Basic</Link>
             </li>
+            <li>
+              <Link to="/xstate">X State</Link>
+            </li>
           </ul>
 
           <hr />
           <Route path="/basic" component={List} />
+          <Route path="/xstate" component={XstateList} />
         </div>
       </Router>
     );
