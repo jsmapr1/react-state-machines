@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import './App.css';
+import ListClass from './components/ListClass/List';
 import List from './components/List/List';
 import XstateList from './components/XstateList/XstateList';
+import XstateListClass from './components/XstateListClass/XstateList';
 
 class App extends Component {
   render() {
@@ -18,13 +20,21 @@ class App extends Component {
               <Link to="/basic">Basic</Link>
             </li>
             <li>
+              <Link to="/basic-hook">Basic</Link>
+            </li>
+            <li>
               <Link to="/xstate">X State</Link>
+            </li>
+            <li>
+              <Link to="/xstate-hook">X State with hooks</Link>
             </li>
           </ul>
 
           <hr />
-          <Route path="/basic" component={List} />
-          <Route path="/xstate" component={XstateList} />
+          <Route path="/basic" component={ListClass} />
+          <Route path="/basic-hook" component={List} />
+          <Route path="/xstate" component={XstateListClass} />
+          <Route path="/xstate-hook" component={XstateList} />
         </div>
       </Router>
     );
