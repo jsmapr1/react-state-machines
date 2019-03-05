@@ -58,14 +58,25 @@ export default function HabitTracker() {
   return(
     <div
       style={{
-        padding: 20
+        padding: 20,
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
       }}
     >
       <h1>Habit Tracker</h1>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => service.send('TOGGLE')}
+      >
+        {display.value === 'chart' ? 'Show Table' : 'Show Graph'}
+      </Button>
       <div style={{
         display: 'flex',
         justifyContent: 'center',
-        height: 300
+        width: '100%'
       }}>
 
         {display.value === 'chart' &&
@@ -76,13 +87,6 @@ export default function HabitTracker() {
         }
       </div>
 
-    <Button
-      variant="contained"
-      color="primary"
-      onClick={() => service.send('TOGGLE')}
-    >
-      {display.value === 'chart' ? 'Show Table' : 'Show Graph'}
-    </Button>
     </div>
   )
 }
