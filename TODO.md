@@ -1,0 +1,13 @@
+# To Do
+ - Habit Machine:
+    - Table
+        - loadData
+        - edit
+            - error
+            - accepted
+        - switch
+        - send (modal)
+    - Graph
+        - switch
+        - loadData
+        - send (modal)

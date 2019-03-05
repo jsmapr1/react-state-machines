@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import './App.css';
+import HabitTracker from './components/HabitTracker/HabitTracker';
 import ListClass from './components/ListClass/List';
 import List from './components/List/List';
 import XstateList from './components/XstateList/XstateList';
@@ -15,6 +16,9 @@ class App extends Component {
           <ul>
             <li>
               <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/habit">Habit</Link>
             </li>
             <li>
               <Link to="/basic">Basic</Link>
@@ -31,6 +35,7 @@ class App extends Component {
           </ul>
 
           <hr />
+          <Route path="/habit" component={HabitTracker} />
           <Route path="/basic" component={ListClass} />
           <Route path="/basic-hook" component={List} />
           <Route path="/xstate" component={XstateListClass} />
