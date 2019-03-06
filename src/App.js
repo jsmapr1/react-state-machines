@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import './App.css';
-import HabitTracker from './components/HabitTracker/HabitTracker';
+import HabitTrackerA from './components/HabitTrackerA/HabitTracker';
+import HabitTrackerB from './components/HabitTrackerB/HabitTracker';
 import ListClass from './components/ListClass/List';
 import List from './components/List/List';
 import XstateList from './components/XstateList/XstateList';
@@ -12,13 +13,19 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <ul>
+        <div
+          class="menu"
+        >
+          <ul
+          >
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/habit">Habit</Link>
+              <Link to="/habit-a">Habit A</Link>
+            </li>
+            <li>
+              <Link to="/habit-b">Habit B</Link>
             </li>
             <li>
               <Link to="/basic">Basic</Link>
@@ -35,7 +42,8 @@ class App extends Component {
           </ul>
 
           <hr />
-          <Route path="/habit" component={HabitTracker} />
+          <Route path="/habit-a" component={HabitTrackerA} />
+          <Route path="/habit-b" component={HabitTrackerB} />
           <Route path="/basic" component={ListClass} />
           <Route path="/basic-hook" component={List} />
           <Route path="/xstate" component={XstateListClass} />

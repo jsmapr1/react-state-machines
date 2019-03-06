@@ -57,13 +57,7 @@ export default function HabitTracker() {
 
   return(
     <div
-      style={{
-        padding: 20,
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-      }}
+      class="habit-wrapper"
     >
       <h1>Habit Tracker</h1>
       <Button
@@ -73,11 +67,7 @@ export default function HabitTracker() {
       >
         {display.value === 'chart' ? 'Show Table' : 'Show Graph'}
       </Button>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%'
-      }}>
+      <div class="chart-wrapper">
 
         {display.value === 'chart' &&
           <HabitChart data={habitData}/>
