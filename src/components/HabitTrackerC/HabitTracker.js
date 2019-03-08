@@ -1,6 +1,6 @@
 import React from 'react';
 import { useReducer, useMemo, useState, useEffect } from 'react';
-import { interpret } from "xstate/lib/interpreter";
+import { interpret } from "xstate";
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -26,7 +26,6 @@ export default function HabitTracker() {
   useEffect(() => {
     loadData()
       .then(data => {
-        console.log(data)
         setHabit(data)
         service.send('LOAD')
       })

@@ -4,9 +4,11 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Input from '@material-ui/core/Input';
 import Paper from '@material-ui/core/Paper';
+import { matchesState } from "xstate";
 
-export default function HabitTable({ data }) {
+export default function HabitTable({ data, machine, service}) {
   return(
     <Paper>
       <Table>
@@ -23,7 +25,9 @@ export default function HabitTable({ data }) {
                 <TableCell component="th" scope="row">
                   {row.date}
                 </TableCell>
-                <TableCell >{row.value}</TableCell>
+                <TableCell onClick={() => service.send('table.CLICK')}>
+                  { true ? row.value : <Input>{row.value}</Input>}
+                </TableCell>
               </TableRow>
             );
           })}
