@@ -32,7 +32,6 @@ const habitData = [
 export default () => {
   return fetch('http://localhost:3009/habits')
   .then(d => d.json())
-  .then(x => new Promise(resolve => setTimeout(() => resolve(x), 3000)))
 }
 
 export function saveData(id, value) {
@@ -41,7 +40,7 @@ export function saveData(id, value) {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(value), 
+        body: JSON.stringify(value),
     })
     .then(response => response.json());
 }

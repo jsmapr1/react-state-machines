@@ -15,7 +15,7 @@
     "xstate": "^4.3.3"
   },
   "scripts": {
-    "api": "npx json-server db.json --port=3009",
+    "api": "npx json-server db.json --port=3009 --watch -d 2000",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

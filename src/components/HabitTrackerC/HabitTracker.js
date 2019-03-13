@@ -38,7 +38,7 @@ export default function HabitTracker() {
     const update = habits.find(habit => habit.id === id);
     saveData(id, {
       ...update,
-      value
+      value: Number(value),
     })
     .then(() => {
       loadData()
