@@ -6,15 +6,16 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Input from '@material-ui/core/Input';
 import Paper from '@material-ui/core/Paper';
+import HabitInput from './HabitInput'
 import { matchesState } from "xstate";
 
-export default function HabitTable({ data, machine, service}) {
+export default function HabitTable({ data, machine, save, service}) {
   return(
     <Paper>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
+            <TableCell>SD</TableCell>
             <TableCell >Habits</TableCell>
          </TableRow>
         </TableHead>
@@ -25,8 +26,13 @@ export default function HabitTable({ data, machine, service}) {
                 <TableCell component="th" scope="row">
                   {row.date}
                 </TableCell>
-                <TableCell onClick={() => service.send('table.CLICK')}>
-                  { true ? row.value : <Input>{row.value}</Input>}
+
+                <TableCell>
+                  { machine.value.table === 'display' ? 
+                    <span onClick={() => service.send('TOGGLE')}>{row.value}</span>
+                    :
+                    <HabitInput row={row} service={service} save={save}/>
+                  }
                 </TableCell>
               </TableRow>
             );

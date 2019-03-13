@@ -4,10 +4,10 @@ import { interpret } from "xstate";
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import loadData from './service';
+import loadData, {saveData} from './service';
 import HabitTrackerMachine from './HabitTracker.machine';
 import HabitChart from '../HabitChart/HabitChart';
-import HabitTable from '../HabitTable/HabitTable';
+import HabitTable from '../HabitTableB/HabitTable';
 
 export default function HabitTracker() {
   const [habits, setHabit] = useState([]);
@@ -23,17 +23,31 @@ export default function HabitTracker() {
     []
   );
 
-  useEffect(() => {
-    loadData()
-      .then(data => {
-        setHabit(data)
-        service.send('LOAD')
-      })
+  useEffect(async () => {
+    const data = await loadData()
+    setHabit(data)
+    service.send('LOAD')
   }, []);
 
   useEffect(() => {
     return () => service.stop();
   }, []);
+
+  const save = (id, value) => {
+    service.send('LOAD')
+    const update = habits.find(habit => habit.id === id);
+    saveData(id, {
+      ...update,
+      value
+    })
+    .then(() => {
+      loadData()
+        .then(data => {
+          setHabit(data)
+          service.send('LOAD')
+        })
+    })
+  }
 
   return(
     <div
@@ -55,8 +69,13 @@ export default function HabitTracker() {
         {display.value === 'chart' &&
           <HabitChart data={habits}/>
         }
-        {display.value === 'table' &&
-          <HabitTable data={habits}/>
+        {display.value.table &&
+        <HabitTable
+          data={habits}
+          service={service}
+          machine={display}
+          save={save}
+        />
         }
       </div>
 

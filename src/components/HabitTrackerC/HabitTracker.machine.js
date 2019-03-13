@@ -6,7 +6,7 @@ const habitMachine = {
     chart: {
       on: {
         TOGGLE: 'table'
-      }
+      },
     },
     dataLoading: {
       on: {
@@ -15,7 +15,21 @@ const habitMachine = {
     },
     table: {
       on: {
-        TOGGLE: 'chart'
+        TOGGLE: 'chart',
+        LOAD: 'dataLoading'
+      },
+      initial: 'display',
+      states: {
+        input: {
+          on: {
+            TOGGLE: 'display',
+          }
+        },
+        display: {
+          on: {
+            TOGGLE: 'input',
+          }
+        }
       }
     }
   }

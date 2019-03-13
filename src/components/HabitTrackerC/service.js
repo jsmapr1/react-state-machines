@@ -34,3 +34,14 @@ export default () => {
   .then(d => d.json())
   .then(x => new Promise(resolve => setTimeout(() => resolve(x), 3000)))
 }
+
+export function saveData(id, value) {
+  return fetch(`http://localhost:3009/habits/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(value), 
+    })
+    .then(response => response.json());
+}
