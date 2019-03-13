@@ -33,20 +33,16 @@ export default function HabitTracker() {
     return () => service.stop();
   }, []);
 
-  const save = (id, value) => {
+  const save = async (id, value) => {
     service.send('LOAD')
     const update = habits.find(habit => habit.id === id);
-    saveData(id, {
+    await saveData(id, {
       ...update,
       value: Number(value),
     })
-    .then(() => {
-      loadData()
-        .then(data => {
-          setHabit(data)
-          service.send('LOAD')
-        })
-    })
+    const data = await loadData()
+    setHabit(data)
+    service.send('LOAD')
   }
 
   return(
