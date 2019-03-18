@@ -6,38 +6,37 @@ import Button from '@material-ui/core/Button';
 import { matchesState } from "xstate";
 
 export default function HabitInput({ row, save }) {
-  const [control, updateValue] = useState(row.value);
   const [display, setCurrent] = useState(HabitInputMachine.initialState);
   const service = useMemo(
     () =>
-      interpret(HabitInputMachine)
+      interpret(HabitInputMachine.withContext({amount: row.value}))
       .onTransition(state => {
         setCurrent(state);
       })
       .start(),
-    []
+    [row]
   );
   useEffect(() => {
     return () => service.stop();
   }, []);
-   if(display.value === 'display') {
-    
-      return(<span onClick={() => service.send('TOGGLE_INPUT')}>{row.value}</span>
-      )
-    }
+  if(display.value === 'display') {
+
+    return(<span onClick={() => service.send('TOGGLE_INPUT')}>{row.value}</span>
+    )
+  }
   if(display.value === 'input') {
     return(
 
       <div>
         <Input
-          value={control}
-          onChange={e => updateValue(e.target.value)}
+          value={display.context.amount}
+          onChange={e => service.send({type: 'UPDATE', value: e.target.value})}
         ></Input>
       <Button
         size="small"
         variant="contained"
         color="primary"
-        onClick={() => save(row.id, control)}
+        onClick={() => save(row.id, display.context.amount)}
       >
         Save
       </Button>

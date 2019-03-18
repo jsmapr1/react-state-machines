@@ -1,10 +1,18 @@
-import { Machine } from 'xstate';
+import { Machine, assign } from 'xstate';
 const habitInputMachine = {
   key: 'habitInput',
   initial: 'display',
+  context: {
+    amount: 0
+  },
   states: {
     input: {
       on: {
+        UPDATE: {
+          actions: assign({
+            amount: (ctx, e) => e.value
+          })
+        },
         TOGGLE_INPUT: 'display',
       }
     },
@@ -13,7 +21,18 @@ const habitInputMachine = {
         TOGGLE_INPUT: 'input',
       }
     }
-  }
+  },
 };
 
-export default Machine(habitInputMachine);
+const actions = {
+  actions: {
+    updateAmount: (context, event) => {
+      console.log(context)
+      console.log(event)
+      return {
+        amount: 10,
+      }
+    },
+  }
+}
+export default Machine(habitInputMachine, actions);
