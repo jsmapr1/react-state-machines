@@ -1,39 +1,39 @@
 {
   "habits": [
-      {
-        "id": 1,
-        "date": "Monday",
-        "value": 10
-      },
-      {
-        "id": 2,
-        "date": "Tuesday",
-        "value": 8
-      },
-      {
-        "id": 3,
-        "date": "Wednesday",
-        "value": 9
-      },
-      {
-        "id": 4,
-        "date": "Thurday",
-        "value": 5
-      },
-      {
-        "id": 5,
-        "date": "Friday",
-        "value": 9
-      },
-      {
-        "id": 6,
-        "date": "Saturday",
-        "value": 3
-      },
-      {
-        "id": 7,
-        "date": "Sunday",
-        "value": 6
-      }
-    ]
+    {
+      "id": 1,
+      "date": "Monday",
+      "value": 10
+    },
+    {
+      "id": 2,
+      "date": "Tuesday",
+      "value": 8
+    },
+    {
+      "id": 3,
+      "date": "Wednesday",
+      "value": 9
+    },
+    {
+      "id": 4,
+      "date": "Thurday",
+      "value": 5
+    },
+    {
+      "id": 5,
+      "date": "Friday",
+      "value": 9
+    },
+    {
+      "id": 6,
+      "date": "Saturday",
+      "value": 3
+    },
+    {
+      "id": 7,
+      "date": "Sunday",
+      "value": 6
+    }
+  ]
 }

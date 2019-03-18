@@ -28,11 +28,7 @@ export default function HabitTable({ data, machine, save, service}) {
                 </TableCell>
 
                 <TableCell>
-                  { machine.value.table === 'display' ? 
-                    <span onClick={() => service.send('TOGGLE_INPUT')}>{row.value}</span>
-                    :
-                    <HabitInput row={row} service={service} save={save}/>
-                  }
+                  <HabitInput row={row} save={save}/>
                 </TableCell>
               </TableRow>
             );
