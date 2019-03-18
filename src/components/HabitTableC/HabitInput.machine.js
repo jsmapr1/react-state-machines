@@ -23,16 +23,4 @@ const habitInputMachine = {
     }
   },
 };
-
-const actions = {
-  actions: {
-    updateAmount: (context, event) => {
-      console.log(context)
-      console.log(event)
-      return {
-        amount: 10,
-      }
-    },
-  }
-}
-export default Machine(habitInputMachine, actions);
+export default Machine(habitInputMachine);
