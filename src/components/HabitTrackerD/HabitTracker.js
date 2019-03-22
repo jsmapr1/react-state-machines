@@ -65,11 +65,9 @@ export default function HabitTracker() {
         {display.value === 'chart' &&
           <HabitChart data={habits}/>
         }
-        {display.value.table &&
+        {display.value === 'table' &&
         <HabitTable
           data={habits}
-          service={service}
-          machine={display}
           save={save}
         />
         }

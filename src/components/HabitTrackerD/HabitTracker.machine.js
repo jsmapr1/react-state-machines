@@ -17,19 +17,6 @@ const habitMachine = {
       on: {
         TOGGLE: 'chart',
         LOAD: 'dataLoading'
-      },
-      initial: 'display',
-      states: {
-        input: {
-          on: {
-            TOGGLE_INPUT: 'display',
-          }
-        },
-        display: {
-          on: {
-            TOGGLE_INPUT: 'input',
-          }
-        }
       }
     }
   }

@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import HabitInput from './HabitInput'
 import { matchesState } from "xstate";
 
-export default function HabitTable({ data, machine, save, service}) {
+export default function HabitTable({ data, machine, save }) {
   return(
     <Paper>
       <Table>

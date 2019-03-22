@@ -1,12 +1,5 @@
 import React from 'react';
-import { useReducer, useState, useEffect } from 'react';
-
-let timeoutId;
-function fakeAPI () {
-  return new Promise((resolve, reject) => {
-    timeoutId = setTimeout(() => resolve(['joe', 'bob']), 1000);
-  });
-}
+import { useReducer } from 'react';
 
 const basicMachine = {
   initial: 'closed',
@@ -24,26 +17,20 @@ const basicMachine = {
   }
 };
 
-const transition = (state, event) => {
-  return basicMachine.states[state].on[event] || state;
+const transition = (machineState, event) => {
+  return basicMachine.states[machineState].on[event] || machineState;
 }
 
 export default function List() {
-  const [list, updateList] = useState([]);
   const [display, action] = useReducer(
     transition,
     basicMachine.initial
   );
-  useEffect(() => {
-      fakeAPI()
-      .then(json => updateList(json));
-      return () => clearTimeout(timeoutId);
-  })
   return(
     <div>
       <button onClick={() => action('TOGGLE')}>Display</button>
       {display === 'open' &&
-        list.map(item => <h2 key={item}>{item}</h2>)
+          <h1>Open!</h1>
       }
     </div>
   )

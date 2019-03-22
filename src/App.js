@@ -6,7 +6,6 @@ import HabitTrackerA from './components/HabitTrackerA/HabitTracker';
 import HabitTrackerB from './components/HabitTrackerB/HabitTracker';
 import HabitTrackerC from './components/HabitTrackerC/HabitTracker';
 import HabitTrackerD from './components/HabitTrackerD/HabitTracker';
-import ListClass from './components/ListClass/List';
 import List from './components/List/List';
 import XstateList from './components/XstateList/XstateList';
 import XstateListClass from './components/XstateListClass/XstateList';
@@ -36,13 +35,7 @@ class App extends Component {
               <Link to="/habit-d">Habit D</Link>
             </li>
             <li>
-              <Link to="/basic">Basic</Link>
-            </li>
-            <li>
               <Link to="/basic-hook">Basic</Link>
-            </li>
-            <li>
-              <Link to="/xstate">X State</Link>
             </li>
             <li>
               <Link to="/xstate-hook">X State with hooks</Link>
@@ -54,9 +47,7 @@ class App extends Component {
           <Route path="/habit-b" component={HabitTrackerB} />
           <Route path="/habit-c" component={HabitTrackerC} />
           <Route path="/habit-d" component={HabitTrackerD} />
-          <Route path="/basic" component={ListClass} />
           <Route path="/basic-hook" component={List} />
-          <Route path="/xstate" component={XstateListClass} />
           <Route path="/xstate-hook" component={XstateList} />
         </div>
       </Router>
