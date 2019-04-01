@@ -9,7 +9,7 @@ const habitMachine = {
     },
     dataLoading: {
       on: {
-        LOAD: 'chart'
+        LOADED: 'chart'
       }
     },
     table: {

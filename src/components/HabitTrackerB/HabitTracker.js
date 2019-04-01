@@ -27,7 +27,7 @@ export default function HabitTracker() {
     loadData()
       .then(data => {
         setHabit(data)
-        service.send('LOAD')
+        service.send('LOADED')
       })
   }, []);
 
