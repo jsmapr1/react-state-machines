@@ -11,7 +11,7 @@ import HabitTable from '../HabitTableB/HabitTable';
 
 export default function HabitTracker() {
   const [habits, setHabit] = useState([]);
-  const [display, setCurrent] = useState(HabitTrackerMachine.initialState);
+  const [machine, setCurrent] = useState(HabitTrackerMachine.initialState);
 
   const service = useMemo(
     () =>
@@ -55,21 +55,21 @@ export default function HabitTracker() {
         color="primary"
         onClick={() => service.send('TOGGLE')}
       >
-        {display.value === 'chart' ? 'Show Table' : 'Show Graph'}
+        {machine.value === 'chart' ? 'Show Table' : 'Show Graph'}
       </Button>
       <div class="chart-wrapper">
 
-        {display.value === 'dataLoading' &&
+        {machine.value === 'dataLoading' &&
             <CircularProgress />
         }
-        {display.value === 'chart' &&
+        {machine.value === 'chart' &&
           <HabitChart data={habits}/>
         }
-        {display.value.table &&
+        {machine.value.table &&
         <HabitTable
           data={habits}
           service={service}
-          machine={display}
+          machine={machine}
           save={save}
         />
         }

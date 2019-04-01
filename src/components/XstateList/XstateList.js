@@ -5,7 +5,7 @@ import { interpret } from "xstate/lib/interpreter";
 import ListMachine from './XstateList.machine';
 
 export default function XstateList() {
-  const [display, setCurrent] = useState(ListMachine.initialState);
+  const [machine, setCurrent] = useState(ListMachine.initialState);
 
   const service = useMemo(
     () =>
@@ -25,7 +25,7 @@ export default function XstateList() {
     <div>
       <h1>X state!</h1>
       <button onClick={() => service.send('TOGGLE')}>Display</button>
-      {display.value === 'open' &&
+      {machine.value === 'open' &&
           <h1>Open!</h1>
       }
     </div>

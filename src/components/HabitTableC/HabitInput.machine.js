@@ -10,7 +10,7 @@ const habitInputMachine = {
       on: {
         UPDATE: {
           actions: assign({
-            amount: (ctx, e) => e.value
+            amount: (context, e) => e.value
           })
         },
         TOGGLE_INPUT: 'display',

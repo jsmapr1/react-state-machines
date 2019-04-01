@@ -23,7 +23,7 @@ export default function HabitInput({ row, save, service }) {
         size="small"
         variant="contained"
         color="secondary"
-        onClick={() => service.send('TOGGLE')}
+        onClick={() => service.send('TOGGLE_INPUT')}
       >
         Cancel
       </Button>
